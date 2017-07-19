@@ -7,11 +7,22 @@
     <link rel="stylesheet" href="styles.css"/>
   </head>
   <body>
-    <div id="attack-window" class="hidden">
+    <ul id="stats">
+      <li id="stat-day">Day <span class="stat"></span></li>
+      <li id="stat-distance">Distance <span class="stat"></span></li>
+      <li id="stat-crew">Crew <span class="stat"></span></li>
+      <li id="stat-oxen">Oxen <span class="stat"></span></li>
+      <li id="stat-food">Food <span class="stat"></span></li>
+      <li id="stat-money">Money <span class="stat"></span></li>
+      <li id="stat-firepower">Firepower <span class="stat"></span></li>
+      <li id="stat-weight">Weight <span class="stat"></span></li>
+    </ul>
+    <ul id="messages"></ul>
+    <div id="attack-window" class="window hidden">
       <button id="fight">Fight</button>
       <button id="runaway">Run away</button>
     </div>
-    <div id="shop-window" class="hidden">
+    <div id="shop-window" class="window hidden">
       <div class="wrap"></div>
       <button id="exit">Exit</button>
     </div>

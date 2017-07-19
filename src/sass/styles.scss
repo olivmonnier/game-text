@@ -1,3 +1,51 @@
+button {
+  padding: 4px 8px;
+  background-color: transparent;
+  border: 1px solid #010101;
+}
+
+#stats {
+  padding-left: 0;
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  list-style-type: none;
+
+  > li {
+    text-align: left;
+
+    > .stat {
+      float: right;
+    }
+  }
+}
+
+#messages {
+  margin-left: 10px;
+  padding-left: 0;
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 315px);
+  max-height: 140px;
+  overflow-y: auto;
+  list-style-type: none;
+}
+
+.window {
+  padding: 15px;
+  border: 4px dotted #ddd;
+  border-radius: 4px;
+  text-align: center;
+
+  .wrap {
+    padding-bottom: 15px;
+
+    > * {
+      margin: 4px;      
+    }
+  }
+}
+
 .hidden {
   display: none;
 }

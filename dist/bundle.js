@@ -348,12 +348,26 @@ var UI = function () {
   _createClass(UI, [{
     key: 'notify',
     value: function notify(message, type) {
-      console.log(message + ' - ' + type);
+      var li = document.createElement('li');
+      var messages = document.querySelector('#messages');
+
+      li.classList.add(type);
+      li.textContent = 'Day ' + Math.ceil(this.caravan.day) + ': ' + message;
+
+      messages.appendChild(li);
+      messages.scrollTop = messages.scrollHeight;
     }
   }, {
     key: 'refreshStats',
     value: function refreshStats() {
-      console.log(this.caravan);
+      document.querySelector('#stat-day .stat').innerHTML = Math.ceil(this.caravan.day);
+      document.querySelector('#stat-distance .stat').innerHTML = Math.floor(this.caravan.distance);
+      document.querySelector('#stat-crew .stat').innerHTML = this.caravan.crew;
+      document.querySelector('#stat-oxen .stat').innerHTML = this.caravan.oxen;
+      document.querySelector('#stat-food .stat').innerHTML = Math.ceil(this.caravan.food);
+      document.querySelector('#stat-money .stat').innerHTML = this.caravan.money;
+      document.querySelector('#stat-firepower .stat').innerHTML = this.caravan.firepower;
+      document.querySelector('#stat-weight .stat').innerHTML = Math.ceil(this.caravan.weight) + '/' + this.caravan.capacity;
     }
   }, {
     key: 'showAttack',

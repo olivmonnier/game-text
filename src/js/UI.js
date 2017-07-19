@@ -2,11 +2,25 @@ export default class UI {
   constructor() {}
 
   notify(message, type) {
-    console.log(`${message} - ${type}`)
+    const li = document.createElement('li');
+    const messages = document.querySelector('#messages');
+
+    li.classList.add(type);
+    li.textContent = `Day ${Math.ceil(this.caravan.day)}: ${message}`;
+
+    messages.appendChild(li);
+    messages.scrollTop = messages.scrollHeight;
   }
 
   refreshStats() {
-    console.log(this.caravan);
+    document.querySelector('#stat-day .stat').innerHTML = Math.ceil(this.caravan.day);
+    document.querySelector('#stat-distance .stat').innerHTML = Math.floor(this.caravan.distance);
+    document.querySelector('#stat-crew .stat').innerHTML = this.caravan.crew;
+    document.querySelector('#stat-oxen .stat').innerHTML = this.caravan.oxen;
+    document.querySelector('#stat-food .stat').innerHTML = Math.ceil(this.caravan.food);
+    document.querySelector('#stat-money .stat').innerHTML = this.caravan.money;
+    document.querySelector('#stat-firepower .stat').innerHTML = this.caravan.firepower;
+    document.querySelector('#stat-weight .stat').innerHTML = Math.ceil(this.caravan.weight) + '/' + this.caravan.capacity;
   }
 
   showAttack(firepower, gold) {
