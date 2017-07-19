@@ -1,14 +1,20 @@
-import { WEIGHT_PER_OX, WEIGHT_PER_PERSON, FOOD_WEIGHT, FIREPOWER_WEIGHT, SLOW_SPEED, FULL_SPEED, FOOD_PER_PERSON } from './constants';
+import constants from './constants';
+
+const { WEIGHT_PER_OX, WEIGHT_PER_PERSON, FOOD_WEIGHT, FIREPOWER_WEIGHT, SLOW_SPEED, FULL_SPEED, FOOD_PER_PERSON } = constants;
 
 export default class Caravan {
   constructor(stats) {
-    this.day = stats.day;
-    this.distance = stats.distance;
-    this.crew = stats.crew;
-    this.food = stats.food;
-    this.oxen = stats.oxen;
-    this.money = stats.money;
-    this.firepower = stats.firepower; 
+    const { day, distance, crew, food, oxen, money, firepower } = stats;
+
+    Object.assign(this, {
+      day,
+      distance,
+      crew,
+      food,
+      oxen,
+      money, 
+      firepower
+    });
   }
 
   updateWeight() {
@@ -24,7 +30,7 @@ export default class Caravan {
     }
 
     if (droppedGuns) {
-      this.ui.notify('Left ${droppedFood} food provisions behind', 'negative');
+      this.ui.notify(`Left ${droppedFood} food provisions behind`, 'negative');
     }
   }
 

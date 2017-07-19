@@ -1,4 +1,4 @@
-export default constants = {
+export default {
   WEIGHT_PER_OX: 20,
   WEIGHT_PER_PERSON: 2,
   FOOD_WEIGHT: 0.6,

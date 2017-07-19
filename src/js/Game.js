@@ -1,9 +1,11 @@
 import Caravan from './Caravan';
 import Event from './Event';
 import UI from './UI';
-import { GAME_SPEED, DAY_PER_STEP, FINAL_DISTANCE } from './constants';
+import constants from './constants';
 
-export default Game {
+const { GAME_SPEED, DAY_PER_STEP, FINAL_DISTANCE, EVENT_PROBABILITY } = constants;
+
+export default class Game {
   constructor() {
     this.ui = new UI();
     this.eventManager = new Event();
@@ -81,6 +83,10 @@ export default Game {
       this.ui.notify('You have returned home!', 'positive');
       this.gameActive = false;
       return;
+    }
+
+    if(Math.random() <= EVENT_PROBABILITY) {
+      this.eventManager.generateEvent();
     }
   }
 

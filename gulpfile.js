@@ -3,6 +3,7 @@ const browserify = require('browserify');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 const browserSync = require('browser-sync');
+const sass = require('gulp-sass');
 
 const reload = browserSync.reload;
 
@@ -14,7 +15,17 @@ gulp.task('babelify', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('serve:dist', ['babelify'], () => {
+gulp.task('styles', () => {
+  return gulp.src([
+    'src/sass/**/*.scss'
+  ])
+    .pipe(sass({
+      precision: 10
+    }).on('error', sass.logError))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('serve:dist', ['babelify', 'styles'], () => {
   browserSync({
     notify: false,
     server: {
@@ -24,4 +35,5 @@ gulp.task('serve:dist', ['babelify'], () => {
   });
 
   gulp.watch(['src/js/**/*.js'], ['babelify', reload]);
+  gulp.watch(['src/sass/**/*.scss'], ['styles', reload]);
 });
